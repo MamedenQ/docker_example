@@ -1,7 +1,6 @@
 version: "3"
 services:
-    curl-example-app:
-        # build: .
+    py310:
         build:
             context: .docker/
             dockerfile: Dockerfile

@@ -1,10 +1,10 @@
-name: example
+name: unit-test
 
 on: workflow_dispatch
 
 jobs:
     example_job:
-        name: example
+        name: unit-test on python3.10
         runs-on: ubuntu-latest
         steps:
             - name: checkout code
@@ -14,4 +14,4 @@ jobs:
             - name: docker compose up
               run: docker-compose up -d
             - name: curl
-              run: docker-compose exec -T curl-example-app curl http://www.example.com/
+              run: docker-compose exec -T py310 pytest
