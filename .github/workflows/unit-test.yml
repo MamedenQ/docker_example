@@ -3,7 +3,7 @@ name: unit-test
 on: workflow_dispatch
 
 jobs:
-    example_job:
+    unit-test-job:
         name: unit-test on python3.10
         runs-on: ubuntu-latest
         steps:
