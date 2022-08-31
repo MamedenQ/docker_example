@@ -1,13 +1,6 @@
-name: unit-test
+name: example
 
-on:
-    workflow_dispatch
-    # pull_request:
-    #   branches:
-    #     - main
-    # push:
-    #   branches:
-    #     - main
+on: workflow_dispatch
 
 jobs:
     example_job:
@@ -20,9 +13,5 @@ jobs:
               run: docker-compose build
             - name: docker compose up
               run: docker-compose up -d
-            # - name: pipenv install
-            #   run: docker-compose exec -T app pipenv install
-            # - name: Pipenv Run Pytest
-            #   run: docker-compose exec -T app pipenv run pytest
             - name: curl
               run: docker-compose exec -T app curl http://www.example.com/
