@@ -5,7 +5,7 @@ services:
         build: .
         volumes:
             - ./:/app
-        # tty: true
+        tty: true
 
         # context: ./dockerfile_dir
         # dockerfile: Dockerfile
