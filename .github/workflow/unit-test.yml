@@ -1,0 +1,28 @@
+name: unit-test
+
+on:
+    workflow_dispatch
+    # pull_request:
+    #   branches:
+    #     - main
+    # push:
+    #   branches:
+    #     - main
+
+jobs:
+    example_job:
+        name: example
+        runs-on: ubuntu-latest
+        steps:
+            # - name: checkout code
+            #   uses: actions/checkout@v3
+            - name: docker build
+              run: docker-compose build
+            - name: docker compose up
+              run: docker-compose up -d
+            # - name: pipenv install
+            #   run: docker-compose exec -T app pipenv install
+            # - name: Pipenv Run Pytest
+            #   run: docker-compose exec -T app pipenv run pytest
+            - name: curl
+              run: docker-compose exec -T app curl http://www.example.com/
