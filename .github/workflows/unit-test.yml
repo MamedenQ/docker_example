@@ -14,4 +14,4 @@ jobs:
             - name: docker compose up
               run: docker-compose up -d
             - name: curl
-              run: docker-compose exec -T app curl http://www.example.com/
+              run: docker-compose exec -T curl-example-app curl http://www.example.com/
