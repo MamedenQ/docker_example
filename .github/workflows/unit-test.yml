@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
     unit-test-job:
-        name: unit-test on python3.10
+        name: unit-test on each python env.
         runs-on: ubuntu-latest
         steps:
             - name: checkout code
@@ -13,5 +13,11 @@ jobs:
               run: docker-compose build
             - name: docker compose up
               run: docker-compose up -d
-            - name: test
-              run: docker-compose exec -T py310 pytest
+            - name: python3.7 test
+              run: docker-compose exec -T py_3_7 pytest
+            - name: python3.8 test
+              run: docker-compose exec -T py_3_8 pytest
+            - name: python3.9 test
+              run: docker-compose exec -T py_3_9 pytest
+            - name: python3.10 test
+              run: docker-compose exec -T py_3_10 pytest
