@@ -1,0 +1,11 @@
+name: run-echo
+
+on: workflow_call
+
+jobs:
+    run-echo-job:
+        name: run echo.
+        runs-on: ubuntu-latest
+        steps:
+            - name: echo!!
+              run: echo "call workflow!!"
