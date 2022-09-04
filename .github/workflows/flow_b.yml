@@ -1,0 +1,11 @@
+name: flow-b
+
+on: workflow_call
+
+jobs:
+    job_b:
+        name: job_b
+        runs-on: ubuntu-latest
+        steps:
+            - name: echo!!
+              run: echo "call workflow!!"

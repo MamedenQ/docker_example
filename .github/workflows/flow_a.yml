@@ -1,0 +1,13 @@
+name: unit-test
+
+on: workflow_dispatch
+
+jobs:
+    job_a:
+        name: job_a
+        runs-on: ubuntu-latest
+        steps:
+            - name: step1
+              uses: echo "run flow_a"
+            - name: call flow_b
+              uses: ./.github/workflows/flow_b.yml
