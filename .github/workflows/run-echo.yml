@@ -7,7 +7,5 @@ jobs:
         name: run echo.
         runs-on: ubuntu-latest
         steps:
-            - name: checkout code
-              uses: actions/checkout@v3
             - name: echo!!
               run: echo "call workflow!!"
