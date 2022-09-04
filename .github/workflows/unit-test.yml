@@ -22,7 +22,7 @@ jobs:
             - name: check
               run: ls -la
             - name: run echo workflow
-              uses: ./.github/workflows/run-echo.yml
+              uses: ./.github/workflows/run-echo
             - name: docker build
               run: docker-compose build
             - name: docker compose up
