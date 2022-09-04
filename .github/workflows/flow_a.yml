@@ -9,5 +9,5 @@ jobs:
         steps:
             - name: step1
               uses: echo "run flow_a"
-            - name: call flow_b
-              uses: mamedenq/docker_example/.github/workflows/flow_b.yml
+    job_call_b:
+        uses: .github/workflows/flow_b.yml
