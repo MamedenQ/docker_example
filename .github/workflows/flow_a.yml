@@ -10,4 +10,4 @@ jobs:
             - name: step1
               uses: echo "run flow_a"
             - name: call flow_b
-              uses: ./.github/workflows/flow_b.yml
+              uses: flow_b.yml
