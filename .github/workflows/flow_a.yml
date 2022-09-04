@@ -1,4 +1,4 @@
-name: flow-a_a
+name: flow-a
 
 on: workflow_dispatch
 
@@ -8,6 +8,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: step1
-              uses: echo "run flow_a"
+              run: echo "run flow_a"
     job_call_b:
         uses: .github/workflows/flow_b.yml
