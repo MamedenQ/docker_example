@@ -25,6 +25,8 @@ jobs:
               with:
                   username: ${{ github.repository_owner }}
                   password: ${{ secrets.GHCR_PAT }}
+                  imagename: "example_container"
+                  tagname: "latest"
     job-unit-test:
         needs: job-docker-build
         name: job-unit-test
