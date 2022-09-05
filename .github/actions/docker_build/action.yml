@@ -33,6 +33,6 @@ runs:
           with:
               push: true
               tags: |
-                  ghcr.io/${OWNER,,}/${{ inputs.imagename }}:${{ inputs.tagname }}
+                  ghcr.io/${{ ${OWNER,,} }}/${{ inputs.imagename }}:${{ inputs.tagname }}
           env:
               OWNER: ${{ inputs.username }}
