@@ -18,8 +18,8 @@ runs:
               registry: ghcr.io
               username: ${OWNER,,}
               password: ${{ inputs.password }}
-              env:
-                  OWNER: ${{ inputs.username }}
+          env:
+              OWNER: ${{ inputs.username }}
         - run: docker build . --tag ghcr.io/${OWNER,,}/example_image:latest
           shell: bash
           env:
