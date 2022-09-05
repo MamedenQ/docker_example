@@ -9,5 +9,14 @@ jobs:
         steps:
             - name: step1
               run: echo "run flow_a"
+    job_call_hello:
+        # - name: Get changed files
+        #   id: changed-files
+        #   uses: tj-actions/changed-files@v29.0.2
+        # - name: example
+        #   if: contains(steps.changed-files.outputs.all_modified_files, "Dockerfile")
+        #   uses: actions/hello
+        - name: example
+          uses: actions/hello
     job_call_b:
         uses: ./.github/workflows/flow_b.yml
