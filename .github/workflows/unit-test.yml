@@ -23,13 +23,13 @@ jobs:
               if: contains(steps.changed-files.outputs.all_modified_files, 'Dockerfile')
               uses: ./.github/actions/docker_build
               with:
-                  # username: ${{ github.repository_owner }}
-                  username: ${OWNER,,}
+                  username: ${{ github.repository_owner }}
+                  # username: ${OWNER,,}
                   password: ${{ secrets.GHCR_PAT }}
                   imagename: "example_container"
                   tagname: "latest"
-              env:
-                  OWNER: ${{ inputs.username }}
+              # env:
+              #     OWNER: ${{ inputs.username }}
     job-unit-test:
         needs: job-docker-build
         name: job-unit-test
