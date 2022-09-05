@@ -1,0 +1,26 @@
+name: "docker-build"
+description: "docker build"
+# inputs:
+#     who-to-greet: # id of input
+#         description: "Who to greet"
+#         required: true
+#         default: "World"
+# outputs:
+#     random-number:
+#         description: "Random number"
+#         value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+    using: "composite"
+    steps:
+        - run: echo "docker build!!"
+          shell: bash
+        # run: docker build .github/docker --file Dockerfile --tag ghcr.io/mamedenq/test_env:latest
+        # - run: echo Hello ${{ inputs.who-to-greet }}.
+        #   shell: bash
+        # - id: random-number-generator
+        #   run: echo "::set-output name=random-number::$(echo $RANDOM)"
+        #   shell: bash
+        # - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+        #   shell: bash
+        # - run: goodbye.sh
+        #   shell: bash
