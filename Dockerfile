@@ -1,1 +1,3 @@
-modify3
+FROM ubuntu:latest
+
+WORKDIR /app

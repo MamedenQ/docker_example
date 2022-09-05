@@ -12,15 +12,28 @@ description: "docker build"
 runs:
     using: "composite"
     steps:
-        - run: echo "docker build!!"
+        - name: Login to GitHub Container Registry
+          uses: docker/login-action@v2
+          with:
+              registry: ghcr.io
+              username: ${OWNER,,}
+              password: ${{ secrets.GHCR_PAT }}
+          env:
+              OWNER: ${{ github.repository_owner }}
+        - run: docker build . --tag ghcr.io/mamedenq/example_image:latest
           shell: bash
-        # run: docker build .github/docker --file Dockerfile --tag ghcr.io/mamedenq/test_env:latest
-        # - run: echo Hello ${{ inputs.who-to-greet }}.
-        #   shell: bash
-        # - id: random-number-generator
-        #   run: echo "::set-output name=random-number::$(echo $RANDOM)"
-        #   shell: bash
-        # - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-        #   shell: bash
-        # - run: goodbye.sh
-        #   shell: bash
+        - name: Build and push Docker image to GitHub Container Registry
+          uses: docker/build-push-action@v3
+          with:
+              push: true
+              tags: |
+                  ghcr.io/${OWNER,,}/example_image:latest
+              # labels: |
+              #     org.opencontainers.image.source=${{ github.event.repository.clone_url }}
+              # cache-from: type=local,src=/tmp/.buildx-cache
+              # cache-to: type=local,dest=/tmp/.buildx-cache-new
+              # build-args: |
+              #     RUBY_VERSION=${{ steps.prepare_build_arg.outputs.RUBY_VERSION }}
+              #     BUNDLER_VERSION=${{ steps.prepare_build_arg.outputs.BUNDLER_VERSION }}
+          env:
+              OWNER: ${{ github.repository_owner }}
