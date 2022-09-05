@@ -20,7 +20,6 @@ runs:
               password: ${{ inputs.password }}
           env:
               OWNER: ${{ inputs.username }}
-          shell: bash
         - run: docker build . --tag ghcr.io/${OWNER,,}/example_image:latest
           env:
               OWNER: ${{ inputs.username }}
