@@ -1,11 +1,11 @@
 name: unit-test
 
-# on: workflow_dispatch
-on:
-    push:
-        branches: ["master"]
-    pull_request:
-        branches: ["master"]
+on: workflow_dispatch
+# on:
+#     push:
+#         branches: ["master"]
+#     pull_request:
+#         branches: ["master"]
 
 jobs:
     job-docker-build:
@@ -27,7 +27,7 @@ jobs:
         steps:
             - name: echo
               run: echo "unit-test"
-            # docker pull ghcr.io/n-jun-k2/sample-actions/python:v1　docker-composeで勝手にpullするから不要かも
+            # docker pull ghcr.io/n-jun-k2/sample-actions/python:v1
             # - name: docker compose up
             #   run: docker-compose up -d
             # - name: python test
