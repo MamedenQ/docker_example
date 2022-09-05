@@ -32,10 +32,4 @@ runs:
                   ghcr.io/${OWNER,,}/example_image:latest
           env:
               OWNER: ${{ inputs.username }}
-              # labels: |
-              #     org.opencontainers.image.source=${{ github.event.repository.clone_url }}
-              # cache-from: type=local,src=/tmp/.buildx-cache
-              # cache-to: type=local,dest=/tmp/.buildx-cache-new
-              # build-args: |
-              #     RUBY_VERSION=${{ steps.prepare_build_arg.outputs.RUBY_VERSION }}
-              #     BUNDLER_VERSION=${{ steps.prepare_build_arg.outputs.BUNDLER_VERSION }}
+          shell: bash
