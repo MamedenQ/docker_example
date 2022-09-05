@@ -20,6 +20,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: example
-              uses: ./github/actions/hello
+              uses: ./.github/actions/hello
     job_call_b:
         uses: ./.github/workflows/flow_b.yml
