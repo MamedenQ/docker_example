@@ -16,16 +16,22 @@ runs:
           uses: docker/login-action@v2
           with:
               registry: ghcr.io
-              username: ${{ inputs.username }}
+              username: ${OWNER,,}
               password: ${{ inputs.password }}
-        - run: docker build . --tag ghcr.io/mamedenq/example_image:latest
+              env:
+                  OWNER: ${{ inputs.username }}
+        - run: docker build . --tag ghcr.io/${OWNER,,}/example_image:latest
           shell: bash
+          env:
+              OWNER: ${{ inputs.username }}
         - name: Build and push Docker image to GitHub Container Registry
           uses: docker/build-push-action@v3
           with:
               push: true
               tags: |
-                  ghcr.io/${{ inputs.username }}/example_image:latest
+                  ghcr.io/${OWNER,,}/example_image:latest
+          env:
+              OWNER: ${{ inputs.username }}
               # labels: |
               #     org.opencontainers.image.source=${{ github.event.repository.clone_url }}
               # cache-from: type=local,src=/tmp/.buildx-cache
@@ -33,5 +39,3 @@ runs:
               # build-args: |
               #     RUBY_VERSION=${{ steps.prepare_build_arg.outputs.RUBY_VERSION }}
               #     BUNDLER_VERSION=${{ steps.prepare_build_arg.outputs.BUNDLER_VERSION }}
-          env:
-              OWNER: ${{ github.repository_owner }}
