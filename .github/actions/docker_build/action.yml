@@ -16,30 +16,42 @@ inputs:
 runs:
     using: "composite"
     steps:
-        - name: print
-          run: echo "username:${{ inputs.username }}"
-          shell: bash
-        - name: print
-          run: echo "username:${OWNER,,} tagname:${{ inputs.tagname }}"
+        # - name: print
+        #   run: echo "username:${{ inputs.username }}"
+        #   shell: bash
+        # - name: print
+        #   run: echo "username:${OWNER,,} tagname:${{ inputs.tagname }}"
+        #   env:
+        #       OWNER: ${{ inputs.username }}
+        #   shell: bash
+        - name: setup env
+          run: echo "_username=${OWNER,,}" >> $GITHUB_ENV
           env:
               OWNER: ${{ inputs.username }}
+          shell: bash
+        - name: print
+          run: echo "_username:${{ inputs._username }}"
           shell: bash
         - name: Login to GitHub Container Registry
           uses: docker/login-action@v2
           with:
               registry: ghcr.io
-              username: ${OWNER,,}
+              # username: ${OWNER,,}
+              username: ${{ inputs._username }}
               password: ${{ inputs.password }}
-          env:
-              OWNER: ${{ inputs.username }}
-        - run: docker build . --tag ghcr.io/${OWNER,,}/${{ inputs.imagename }}:${{ inputs.tagname }}
-          env:
-              OWNER: ${{ inputs.username }}
+          # env:
+          #     OWNER: ${{ inputs.username }}
+        - name: build
+          # run: docker build . --tag ghcr.io/${OWNER,,}/${{ inputs.imagename }}:${{ inputs.tagname }}
+          # env:
+          #     OWNER: ${{ inputs.username }}
+          run: docker build . --tag ghcr.io/${{ inputs._username }}/${{ inputs.imagename }}:${{ inputs.tagname }}
           shell: bash
         - name: Build and push Docker image to GitHub Container Registry
           uses: docker/build-push-action@v3
           with:
               push: true
-              tags: ghcr.io/${OWNER,,}/${{ inputs.imagename }}:${{ inputs.tagname }}
-          env:
-              OWNER: ${{ inputs.username }}
+              # tags: ghcr.io/${OWNER,,}/${{ inputs.imagename }}:${{ inputs.tagname }}
+              tags: ghcr.io/${{ inputs._username }}/${{ inputs.imagename }}:${{ inputs.tagname }}
+          # env:
+          #     OWNER: ${{ inputs.username }}
