@@ -22,6 +22,6 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v3
             - name: example
-              uses: ./.github/actions/hello
+              uses: actions/hello
     job_call_b:
         uses: ./.github/workflows/flow_b.yml
