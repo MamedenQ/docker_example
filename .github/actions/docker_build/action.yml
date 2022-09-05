@@ -18,6 +18,7 @@ runs:
     steps:
         - name: print
           run: echo "username:${{ inputs.username }}"
+          shell: bash
         # - name: print
         #   run: echo "username:${OWNER,,}"
         #   env:
