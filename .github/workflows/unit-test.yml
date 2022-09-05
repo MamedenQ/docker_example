@@ -32,9 +32,8 @@ jobs:
         name: job-unit-test
         runs-on: ubuntu-latest
         steps:
-            - name: echo
-              run: echo "unit-test"
-            # docker pull ghcr.io/n-jun-k2/sample-actions/python:v1
+            - name: checkout code
+              uses: actions/checkout@v3
             - name: docker compose up
               run: docker-compose up -d
             - name: python test
