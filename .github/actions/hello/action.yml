@@ -13,6 +13,7 @@ runs:
     using: "composite"
     steps:
         - run: echo "hello from action.yml!!"
+          shell: bash
         # - run: echo Hello ${{ inputs.who-to-greet }}.
         #   shell: bash
         # - id: random-number-generator
