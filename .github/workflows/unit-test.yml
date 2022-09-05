@@ -1,11 +1,6 @@
 name: unit-test
 
 on: workflow_dispatch
-# on:
-#     push:
-#         branches: ["master"]
-#     pull_request:
-#         branches: ["master"]
 
 jobs:
     job-docker-build:
