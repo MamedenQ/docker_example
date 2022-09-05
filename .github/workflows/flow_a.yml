@@ -16,7 +16,10 @@ jobs:
         # - name: example
         #   if: contains(steps.changed-files.outputs.all_modified_files, "Dockerfile")
         #   uses: actions/hello
-        - name: example
-          uses: actions/hello
+        name: job_call_hello
+        runs-on: ubuntu-latest
+        steps:
+            - name: example
+              uses: actions/hello
     job_call_b:
         uses: ./.github/workflows/flow_b.yml
