@@ -12,6 +12,12 @@ inputs:
 runs:
     using: "composite"
     steps:
+        - name: print
+          run: echo "username:${{ inputs.username }}"
+        - name: print
+          run: echo "username:${OWNER,,}"
+          env:
+              OWNER: ${{ inputs.username }}
         - name: Login to GitHub Container Registry
           uses: docker/login-action@v2
           with:
