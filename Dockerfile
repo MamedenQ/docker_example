@@ -4,4 +4,3 @@ WORKDIR /app
 
 RUN pip install --upgrade pip && \
 pip install pytest
-
