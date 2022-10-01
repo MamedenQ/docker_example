@@ -1,6 +1,5 @@
 name: example-dockerfile
 
-# on: workflow_dispatch
 on:
     push:
         branches: ["master"]
