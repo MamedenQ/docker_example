@@ -4,12 +4,14 @@ name: example-otherfile
 on:
     push:
         branches: ["master"]
-        paths-ignore:
-            - "Dockerfile"
+        paths:
+            - "**"
+            - "!Dockerfile"
     pull_request:
         branches: ["master"]
-        paths-ignore:
-            - "Dockerfile"
+        paths:
+            - "**"
+            - "!Dockerfile"
 
 jobs:
     job-1:
