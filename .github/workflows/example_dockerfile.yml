@@ -14,5 +14,5 @@ jobs:
         name: job-1
         runs-on: ubuntu-latest
         steps:
-          - name
-            run: echo "example-dockerfile"
+            - name: echo_info
+              run: echo "example-dockerfile"
